@@ -37,6 +37,7 @@ def cache_page(*args, **kwargs):
 
 
 def cache_control(**kwargs):
+    @wraps
     def _cache_controller(viewfunc):
         @wraps(viewfunc, assigned=available_attrs(viewfunc))
         def _cache_controlled(request, *args, **kw):

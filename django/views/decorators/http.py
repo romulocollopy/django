@@ -31,6 +31,7 @@ def require_http_methods(request_method_list):
 
     Note that request methods should be in uppercase.
     """
+    @functools.wraps
     def decorator(func):
         @wraps(func, assigned=available_attrs(func))
         def inner(request, *args, **kwargs):
@@ -88,6 +89,7 @@ def condition(etag_func=None, last_modified_func=None):
     plus If-modified-since headers) will result in the view function being
     called.
     """
+    @wraps
     def decorator(func):
         @wraps(func, assigned=available_attrs(func))
         def inner(request, *args, **kwargs):

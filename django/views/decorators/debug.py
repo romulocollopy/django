@@ -26,6 +26,7 @@ def sensitive_variables(*variables):
         def my_function()
             ...
     """
+    @functools.wraps
     def decorator(func):
         @functools.wraps(func)
         def sensitive_variables_wrapper(*func_args, **func_kwargs):
@@ -61,6 +62,7 @@ def sensitive_post_parameters(*parameters):
         def my_view(request)
             ...
     """
+    @functools.wraps
     def decorator(view):
         @functools.wraps(view)
         def sensitive_post_parameters_wrapper(request, *args, **kwargs):

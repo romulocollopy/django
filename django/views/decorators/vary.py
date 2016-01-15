@@ -15,6 +15,7 @@ def vary_on_headers(*headers):
 
     Note that the header names are not case-sensitive.
     """
+    @wraps
     def decorator(func):
         @wraps(func, assigned=available_attrs(func))
         def inner_func(*args, **kwargs):
